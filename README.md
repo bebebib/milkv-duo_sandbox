@@ -6,6 +6,7 @@ Folders
 
 - **mlkv-duo-img-zip/** - Initial image to flash to board
 - **RNDIS/** - Windows driver to talk to duo
+- **test-project/** - Source code for testing project
 
 ## Setup 
 
@@ -18,7 +19,7 @@ https://milkv.io/docs/duo/getting-started
 ## Example Usage
 
 1. SSH into milkv, type this command and reboot to turn off blinking LED: `mv /mnt/system/blink.sh /mnt/system/blink.sh_backup && sync`
-2. Turn turn back on, SSH in milk and type this command and reboot: `mv /mnt/system/blink.sh_backup /mnt/system/blink.sh && sync
+2. Turn turn back on, SSH in milk and type this command and reboot: `mv /mnt/system/blink.sh_backup /mnt/system/blink.sh && sync`
 
 ## Development
 

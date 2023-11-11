@@ -10,8 +10,14 @@ target_include_directories(test_project
 
 target_link_directories(test_project
     PUBLIC
-        ${SYSROOT}/lib
-        ${SYSROOT}/usr/lib
+        ${SYSROOT_PATH}/lib
+        ${SYSROOT_PATH}/usr/lib
+)
+
+# Link in external libraries
+target_link_libraries(test_project
+    PUBLIC
+        wiringx
 )
 
 # Add custom command to "load" with SCP
