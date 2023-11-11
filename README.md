@@ -44,6 +44,23 @@ $ cmake --build build --config Debug --target load-project-exe --
 [root@milkv-duo]~# ./test_project
 ```
 
+## Debugging
+
+To debug applications remotely on target, we need to install `gdb-server`, but since it is not included in the image release, we have to add it by cloning the [Duo Buildroot SDK](https://github.com/milkv-duo/duo-buildroot-sdk), and adding the line `CONFIG_TARGET_PACKAGE_GDBSERVER=y` to the file `build/boards/cv180x/cv1800b_milkv_duo_sd/cv1800b_milkv_duo_sd_defconfig`.
+
+### Alternative
+
+We need to have a "C" project running on target, use gdb to debug on target like so:
+```
+$ gdb
+$ (gdb) file test_project
+$ (gdb) b main
+$ (gdb) run
+$ (gdb) c
+```
+
 ## TODO
 
-This is a dual core processor, Linux on one, FreeRTOS on the other, how to get FreeRTOS apps built and loaded?
+- This is a dual core processor, Linux on one, FreeRTOS on the other, how to get FreeRTOS apps built and loaded?
+- Rebuild kernel to include gdbserver so we can remotely debug applications! Currently can't rebuild... getting this error: `make: *** [scripts/fip_v2.mk:32: fsbl-build] Error 2 Error: Build board milkv-duo failed!`
+- Attach a serial output so we can see the serial data!

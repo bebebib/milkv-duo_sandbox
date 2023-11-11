@@ -1,5 +1,5 @@
 add_executable(test_project
-    main.cpp
+    main.c
 )
 
 # Include and link directories from sysroot based on example project
