@@ -18,4 +18,31 @@ https://milkv.io/docs/duo/getting-started
 ## Example Usage
 
 1. SSH into milkv, type this command and reboot to turn off blinking LED: `mv /mnt/system/blink.sh /mnt/system/blink.sh_backup && sync`
-2. Turn turn back on, SSH in milk and type this command and reboot: `mv /mnt/system/blink.sh_backup /mnt/system/blink.sh && sync`
+2. Turn turn back on, SSH in milk and type this command and reboot: `mv /mnt/system/blink.sh_backup /mnt/system/blink.sh && sync
+
+## Development
+
+### Linux (orginally done in WSL2)
+
+Required installations
+- [Duo SDK](https://github.com/milkv-duo/duo-app-sdk/releases/download/duo-app-sdk-v1.2.0/duo-sdk-v1.2.0.tar.gz)
+
+1. Do a wget of the Duo SDK tar ball, then unzip into `/opt/` with the following command: `tar -xf duo-sdk-v1.2.0.tar.gz -C /opt/`
+2. Installation of Linux packages `scp`, `sshpass`, `cmake`, and `ninja`
+3. Configure CMake with 
+```
+$ cmake --build build --config Debug --target clean --
+```
+4. Execute the `load-project-exe` target with
+```
+$ cmake --build build --config Debug --target load-project-exe --
+```
+5. The file `test_project` should be on target on your home directory on the milkv duo
+6. While in a SSH session on the milkv duo, run the executable with the command
+```
+[root@milkv-duo]~# ./test_project
+```
+
+## TODO
+
+This is a dual core processor, Linux on one, FreeRTOS on the other, how to get FreeRTOS apps built and loaded?
